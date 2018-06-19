@@ -1,15 +1,19 @@
-#include "game.hpp"
+#include "Game.hpp"
+#include <iostream>
 
 int		main(int argc, char **argv)
 {
-	int		init_status;
-
 	(void)argc;
 	(void)argv;
-	init_status = init();
-	if (init_status == 0)
-		run();
-	close();
-
+	try
+	{
+		Game	game;
+	
+		game.run();
+	}
+	catch (std::exception e)
+	{
+		std::cout << "Game initialisation failed" << std::endl;
+	}
 	return (0);
 }

@@ -1,10 +1,38 @@
 #include <ncurses.h>
 #include <iostream>
-#include "game.hpp"
+#include "Game.hpp"
 
 WINDOW	*wnd;
 
-int		init(void)
+Game::Game(void)
+{
+	int		ret;
+
+	ret = this->init();
+	if (ret != 0)
+		throw std::exception();
+	return ;
+}
+
+Game::Game(Game const & src)
+{
+	*this = src;
+	return ;
+}
+
+Game::~Game(void)
+{
+	this->close();
+	return ;
+}
+
+Game &		Game::operator=(Game const & rhs)
+{
+	(void)rhs;
+	return (*this);
+}
+
+int			Game::init(void)
 {
 	wnd = initscr();
 	cbreak();
@@ -21,7 +49,7 @@ int		init(void)
 	return (0);
 }
 
-void	run(void)
+void		Game::run(void)
 {
 	std::string		text;
 
@@ -35,7 +63,7 @@ void	run(void)
 	while (1);
 }
 
-void	close(void)
+void		Game::close(void)
 {
 	endwin();
 }

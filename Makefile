@@ -6,9 +6,9 @@ FLAGS = -Wall -Wextra -Werror
 
 LIB = -lncurses
 
-SRC = src/main.cpp src/game.cpp
+SRC = src/main.cpp src/Game.cpp
 
-OBJ = bin/main.o bin/game.o
+OBJ = bin/main.o bin/Game.o
 
 bin/$(NAME): bin/obj
 	$(CC) -o $(NAME) $(OBJ) $(FLAGS) $(LIB)
