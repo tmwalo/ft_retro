@@ -8,10 +8,8 @@
 class GameEntityEnv : public GameEntity
 {
 
-	private:
-		GameEntityEnv(void);
-
 	public:
+		GameEntityEnv(void);
 		GameEntityEnv(char displayChar, Point pos, int hitPts, int maxHitPts, int energyPts,
 		int maxEnergyPts, int specialAttckCost, int lvl, std::string name, int meleeAttckDmg,
 		int rangedAttckDmg, int specialAttckDmg, int armorDmgReduction);

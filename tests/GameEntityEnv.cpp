@@ -1,6 +1,11 @@
 
 #include "GameEntityEnv.hpp"
 
+GameEntityEnv::GameEntityEnv(void)
+{
+	return ;
+}
+
 GameEntityEnv::GameEntityEnv(char displayChar, Point pos, int hitPts, int maxHitPts, int energyPts,
 						int maxEnergyPts, int specialAttckCost, int lvl, std::string name,
 						int meleeAttckDmg, int rangedAttckDmg, int specialAttckDmg,

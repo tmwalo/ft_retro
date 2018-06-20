@@ -21,9 +21,9 @@ class GameEntity
 		int							_rangedAttckDmg;
 		int							_specialAttckDmg;
 		int							_armorDmgReduction;
-		GameEntity(void);
 
 	public:
+		GameEntity(void);
 		GameEntity(GameEntity const & src);
 		GameEntity(char displayChar, Point pos, int hitPts, int maxHitPts, int energyPts,
 		int maxEnergyPts, int specialAttckCost, int lvl, std::string name, int meleeAttckDmg,

@@ -11,15 +11,6 @@ int		main(void)
 	Rectangle	rect3(rect2);
 	Rectangle	rect4(point3, point3);
 
-	try
-	{
-		Rectangle	rect1;
-	}
-	catch (std::exception e)
-	{
-		std::cout << "caught exception - tried to instatiate Rectangle without providing Point arguments" << std::endl;
-	}
-
 	std::cout << "rect2 state: topLeftCoords - " << rect2.getTopLeftCoords() << ", bottomRightCoords - " << rect2.getBottomRightCoords() << std::endl;
 	std::cout << "rect3 state: topLeftCoords - " << rect3.getTopLeftCoords() << ", bottomRightCoords - " << rect3.getBottomRightCoords() << std::endl;
 

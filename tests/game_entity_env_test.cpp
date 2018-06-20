@@ -9,6 +9,7 @@ int		main(void)
 	GameEntityEnv		player1('>', pt, 100, 100, 100, 100, 20, 1, "spykos", 30, 10, 50, 5);
 	GameEntityEnv		player2('!', pt, 100, 100, 100, 100, 20, 1, "delicious", 30, 10, 50, 5);
 	GameEntityEnv		player3(player1);
+	GameEntityEnv		player4;
 	GameEntityEnv		enemy('X', pt, 50, 50, 50, 50, 20, 1, "enemy of progress", 20, 8, 25, 7);
 	GameEntityEnv		asteroid1('*', pt, 0, 0, 0, 0, 20, 1, "space rock", 40, 0, 0, 10);
 	GameEntityEnv		asteroid2('*', pt, 0, 0, 0, 0, 9000, 9000, "choc thunder", 9000, 0, 0, 9000);
@@ -17,6 +18,7 @@ int		main(void)
 	std::cout << player2 << std::endl;
 	std::cout << "player3(player1)" << std::endl;
 	std::cout << player3 << std::endl;
+	std::cout << player4 << std::endl;
 	std::cout << enemy << std::endl;
 	std::cout << asteroid1 << std::endl;
 	std::cout << asteroid2 << std::endl;

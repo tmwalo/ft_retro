@@ -3,8 +3,22 @@
 #include <iostream>
 #include "Point.hpp"
 
-GameEntity::GameEntity(void)
+GameEntity::GameEntity(void) : _displayChar('*'),
+								_hitPts(100),
+								_maxHitPts(100),
+								_energyPts(100),
+								_maxEnergyPts(100),
+								_specialAttckCost(20),
+								_lvl(1),
+								_name("default"),
+								_meleeAttckDmg(25),
+								_rangedAttckDmg(10),
+								_specialAttckDmg(50),
+								_armorDmgReduction(5)
 {
+	Point	pt(0, 0);
+
+	this->_pos = pt;
 	return ;
 }
 
@@ -109,7 +123,7 @@ char			GameEntity::getDisplayChar(void) const
 	return (this->_displayChar);
 }
 
-Point 			GameEntity::getPos(void) const
+Point			GameEntity::getPos(void) const
 {
 	return (this->_pos);
 }
