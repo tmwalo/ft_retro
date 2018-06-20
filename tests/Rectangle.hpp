@@ -1,4 +1,6 @@
-#include "Point.hpp"
+#ifndef RECTANGLE_H
+# define RECTANGLE_H
+# include "Point.hpp"
 
 class Rectangle
 {
@@ -6,10 +8,10 @@ class Rectangle
 	private:
 		Point	_topLeftCoords;
 		Point	_bottomRightCoords;
+		Rectangle(void);
 
 	public:
-		Rectangle(void);
-		Rectangle(Point topLeftCoords, Point topRightCoords);
+		Rectangle(Point topLeftCoords, Point bottomRightCoords);
 		Rectangle(Rectangle const & src);
 		~Rectangle(void);
 		Rectangle &		operator=(Rectangle const & rhs);
@@ -19,3 +21,5 @@ class Rectangle
 		void			setBottomRightCoords(Point bottomRightCoords);
 
 };
+
+#endif

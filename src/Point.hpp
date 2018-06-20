@@ -1,3 +1,7 @@
+#ifndef POINT_H
+# define POINT_H
+# include <iostream>
+
 class Point
 {
 
@@ -17,3 +21,7 @@ class Point
 		void			setX(unsigned int val);
 
 };
+
+std::ostream &	operator<<(std::ostream & o, Point const & rhs);
+
+#endif

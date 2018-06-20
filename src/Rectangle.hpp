@@ -1,4 +1,6 @@
-#include "Point.hpp"
+#ifndef RECTANGLE_H
+# define RECTANGLE_H
+# include "Point.hpp"
 
 class Rectangle
 {
@@ -18,4 +20,6 @@ class Rectangle
 		void			setTopLeftCoords(Point topLeftCoords);
 		void			setBottomRightCoords(Point bottomRightCoords);
 
-}
+};
+
+#endif

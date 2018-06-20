@@ -2,11 +2,14 @@
 #ifndef GAMEENTITY_H
 # define GAMEENTITY_H
 # include <iostream>
+# include "Point.hpp"
 
 class GameEntity
 {
 
 	private:
+		char						_displayChar;
+		Point						_pos;
 		int 						_hitPts;
 		int							_maxHitPts;
 		int							_energyPts;
@@ -22,7 +25,9 @@ class GameEntity
 
 	public:
 		GameEntity(GameEntity const & src);
-		GameEntity(int hitPts, int maxHitPts, int energyPts, int maxEnergyPts, int specialAttckCost, int lvl, std::string name, int meleeAttckDmg, int rangedAttckDmg, int specialAttckDmg, int armorDmgReduction);
+		GameEntity(char displayChar, Point pos, int hitPts, int maxHitPts, int energyPts,
+		int maxEnergyPts, int specialAttckCost, int lvl, std::string name, int meleeAttckDmg,
+		int rangedAttckDmg, int specialAttckDmg, int armorDmgReduction);
 		~GameEntity(void);
 		GameEntity &		operator=(GameEntity const & rhs);
 		void				meleeAttack(GameEntity const & target);
@@ -30,6 +35,8 @@ class GameEntity
 		void				specialAttack(GameEntity const & target);
 		void				takeDamage(unsigned int amount);
 		void				beRepaired(unsigned int amount);
+		char				getDisplayChar(void) const;
+		Point				getPos(void) const;
 		int					getHitPts(void) const;
 		int					getMaxHitPts(void) const;
 		int					getEnergyPts(void) const;
@@ -41,6 +48,8 @@ class GameEntity
 		int					getRangedAttckDmg(void) const;
 		int					getSpecialAttckDmg(void) const;
 		int					getArmorDmgReduction(void) const;
+		void				setDisplayChar(char val);
+		void				setPos(Point val);
 		void				setHitPts(int val);
 		void				setMaxHitPts(int val);
 		void				setEnergyPts(int val);

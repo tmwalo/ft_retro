@@ -1,4 +1,6 @@
-#include <iostream>
+#ifndef POINT_H
+# define POINT_H
+# include <iostream>
 
 class Point
 {
@@ -20,4 +22,6 @@ class Point
 
 };
 
-std::ostream &			operator<<(std::ostream & o, Point const & rhs);
+std::ostream &	operator<<(std::ostream & o, Point const & rhs);
+
+#endif

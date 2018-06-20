@@ -53,6 +53,6 @@ void			Point::setX(unsigned int val)
 std::ostream &	operator<<(std::ostream & o, Point const & rhs)
 {
 	o << "y - " << rhs.getY();
-	o << ",x - " << rhs.getX();
+	o << ", x - " << rhs.getX();
 	return (o);
 }

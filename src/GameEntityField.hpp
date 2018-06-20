@@ -1,3 +1,6 @@
+#ifndef GAMEENTITYFIELD_H
+# define GAMEENTITYFIELD_H
+
 class GameEntityField
 {
 
@@ -14,3 +17,5 @@ class GameEntityField
 		GameEntityField const &		operator=(GameEntityField const & rhs);
 
 };
+
+#endif

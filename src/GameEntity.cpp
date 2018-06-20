@@ -1,15 +1,19 @@
 
 #include "GameEntity.hpp"
 #include <iostream>
+#include "Point.hpp"
 
 GameEntity::GameEntity(void)
 {
 	return ;
 }
 
-GameEntity::GameEntity(int hitPts, int maxHitPts, int energyPts, int maxEnergyPts,
-						int specialAttckCost, int lvl, std::string name, int meleeAttckDmg,
-						int rangedAttckDmg, int specialAttckDmg, int armorDmgReduction) :
+GameEntity::GameEntity(char displayChar, Point pos, int hitPts, int maxHitPts, int energyPts,
+						int maxEnergyPts, int specialAttckCost, int lvl, std::string name,
+						int meleeAttckDmg, int rangedAttckDmg, int specialAttckDmg,
+						int armorDmgReduction) :
+										_displayChar(displayChar),
+										_pos(pos),
 										_hitPts(hitPts),
 										_maxHitPts(maxHitPts),
 										_energyPts(energyPts),
@@ -38,6 +42,8 @@ GameEntity::~GameEntity(void)
 
 GameEntity &		GameEntity::operator=(GameEntity const & rhs)
 {
+	this->_displayChar = rhs.getDisplayChar();
+	this->_pos = rhs.getPos();
 	this->_hitPts = rhs.getHitPts();
 	this->_maxHitPts = rhs.getMaxHitPts();
 	this->_energyPts = rhs.getEnergyPts();
@@ -98,6 +104,16 @@ void			GameEntity::beRepaired(unsigned int amount)
 	return ;
 }
 
+char			GameEntity::getDisplayChar(void) const
+{
+	return (this->_displayChar);
+}
+
+Point			GameEntity::getPos(void) const
+{
+	return (this->_pos);
+}
+
 int				GameEntity::getHitPts(void) const
 {
 	return (this->_hitPts);
@@ -151,6 +167,16 @@ int				GameEntity::getSpecialAttckDmg(void) const
 int				GameEntity::getArmorDmgReduction(void) const
 {
 	return (this->_armorDmgReduction);
+}
+
+void			GameEntity::setDisplayChar(char val)
+{
+	this->_displayChar = val;
+}
+
+void			GameEntity::setPos(Point val)
+{
+	this->_pos = val;
 }
 
 void			GameEntity::setHitPts(int val)
@@ -210,7 +236,9 @@ void			GameEntity::setArmorDmgReduction(int val)
 
 std::ostream &		operator<<(std::ostream & out, GameEntity & rhs)
 {
+	out << "display char: " << rhs.getDisplayChar() << std::endl;
 	out << "name: " << rhs.getName() << std::endl;
+	out << "position: " << rhs.getPos() << std::endl;
 	out << "hit points: " << rhs.getHitPts() << std::endl;
 	out << "max hit points: " << rhs.getMaxHitPts() << std::endl;
 	out << "energy points: " << rhs.getEnergyPts() << std::endl;

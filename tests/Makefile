@@ -14,8 +14,8 @@ point: point_test.cpp $(PT)
 rectangle: rectangle_test.cpp $(RECT) $(PT)
 	$(CC) -o rectangle rectangle_test.cpp $(RECT) $(PT) $(FLAGS)
 
-game_entity: game_entity_test.cpp $(GE)
-	$(CC) -o game_entity game_entity_test.cpp $(GE) $(FLAGS)
+game_entity: game_entity_test.cpp $(GE) $(PT)
+	$(CC) -o game_entity game_entity_test.cpp $(GE) $(PT) $(FLAGS)
 
 fclean:
 	@echo "rm exes"
