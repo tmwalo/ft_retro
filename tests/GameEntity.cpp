@@ -109,7 +109,7 @@ char			GameEntity::getDisplayChar(void) const
 	return (this->_displayChar);
 }
 
-Point			GameEntity::getPos(void) const
+Point 			GameEntity::getPos(void) const
 {
 	return (this->_pos);
 }

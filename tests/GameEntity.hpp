@@ -9,7 +9,7 @@ class GameEntity
 
 	private:
 		char						_displayChar;
-		Point						_pos;
+		Point 						_pos;
 		int 						_hitPts;
 		int							_maxHitPts;
 		int							_energyPts;
@@ -36,7 +36,7 @@ class GameEntity
 		void				takeDamage(unsigned int amount);
 		void				beRepaired(unsigned int amount);
 		char				getDisplayChar(void) const;
-		Point				getPos(void) const;
+		Point 				getPos(void) const;
 		int					getHitPts(void) const;
 		int					getMaxHitPts(void) const;
 		int					getEnergyPts(void) const;

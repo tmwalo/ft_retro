@@ -1,6 +1,9 @@
 #include <ncurses.h>
 #include <iostream>
 #include "Game.hpp"
+#include "GameEntity.hpp"
+#include "Point.hpp"
+#include <unistd.h>
 
 WINDOW	*wnd;
 
@@ -51,16 +54,73 @@ int			Game::init(void)
 
 void		Game::run(void)
 {
-	std::string		text;
+	Point			startPos(5, 5);
+	GameEntity		player('>', startPos, 1000, 1000, 1000, 1000, 200, 3, "lonewave", 50, 100, 150, 25);
+	int				inputChar;
+	bool			exitRequested;
+	int				posY;
+	int				posX;
 
-	move(5, 5);
-	text = "Hello World\n";
-	for (size_t index = 0; index < text.size(); ++index)
+	while (1)
 	{
-		addch(text[index]);
+		inputChar = wgetch(wnd);
+		posY = player.getPos().getY();
+		posX = player.getPos().getX();
+
+		switch (inputChar) {
+		
+			case 'q':
+				exitRequested = true;
+				break ;
+		
+			case KEY_UP:
+			case 'w':
+			{
+				Point		newPosUp(posY - 1, posX);
+				player.setPos(newPosUp);
+				break ;
+			}
+		
+			case KEY_DOWN:
+			case 's':
+			{
+				Point		newPosDown(posY + 1, posX);
+				player.setPos(newPosDown);
+				break ;
+			}
+		
+			case KEY_LEFT:
+			case 'a':
+			{
+				Point		newPosLeft(posY, posX - 1);
+				player.setPos(newPosLeft);
+				break ;
+			}
+		
+			case KEY_RIGHT:
+			case 'd':
+			{
+				Point		newPosRight(posY, posX + 1);
+				player.setPos(newPosRight);
+				break ;
+			}
+			
+			default:
+				break ;
+		
+		}
+
+		clear();
+
+		mvaddch(player.getPos().getY(), player.getPos().getX(), player.getDisplayChar());
+
+		refresh();
+
+		if (exitRequested)
+			break ;
+
+		usleep(10000);
 	}
-	refresh();
-	while (1);
 }
 
 void		Game::close(void)
