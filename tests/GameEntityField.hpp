@@ -11,7 +11,7 @@ class GameEntityField
 	public:
 		GameEntityField(void);
 		GameEntityField(GameEntityField const & src);
-		~GameEntityField(void);
+		virtual ~GameEntityField(void);
 		GameEntityField &		operator=(GameEntityField const & rhs);
 
 };

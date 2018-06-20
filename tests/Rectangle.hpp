@@ -13,7 +13,7 @@ class Rectangle
 	public:
 		Rectangle(Point topLeftCoords, Point bottomRightCoords);
 		Rectangle(Rectangle const & src);
-		~Rectangle(void);
+		virtual ~Rectangle(void);
 		Rectangle &		operator=(Rectangle const & rhs);
 		Point			getTopLeftCoords(void) const;
 		Point			getBottomRightCoords(void) const;

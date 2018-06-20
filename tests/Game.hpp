@@ -12,7 +12,7 @@ class Game
 
 	public:
 		Game(void);
-		~Game(void);
+		virtual ~Game(void);
 		int			init(void);
 		void		run(void);
 		void		close(void);

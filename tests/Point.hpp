@@ -13,7 +13,7 @@ class Point
 		Point(void);
 		Point(unsigned int y, unsigned int x);
 		Point(Point const & src);
-		~Point(void);
+		virtual ~Point(void);
 		Point &			operator=(Point const & rhs);
 		unsigned int	getY(void) const;
 		unsigned int	getX(void) const;
