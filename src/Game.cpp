@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Game.hpp"
 #include "GameEntity.hpp"
+#include "GameEntityEnv.hpp"
 #include "Point.hpp"
 #include <unistd.h>
 
@@ -60,6 +61,8 @@ void		Game::run(void)
 	bool			exitRequested;
 	int				posY;
 	int				posX;
+	Point			startPt(5, 220);
+	GameEntityEnv	asteroid('*', startPt, 1000, 1000, 1000, 1000, 200, 3, "brick", 50, 100, 150, 25);
 
 	while (1)
 	{
@@ -110,9 +113,12 @@ void		Game::run(void)
 		
 		}
 
+		asteroid.update();
+
 		clear();
 
 		mvaddch(player.getPos().getY(), player.getPos().getX(), player.getDisplayChar());
+		mvaddch(asteroid.getPos().getY(), asteroid.getPos().getX(), asteroid.getDisplayChar());
 
 		refresh();
 
