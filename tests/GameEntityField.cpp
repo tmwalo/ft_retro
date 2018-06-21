@@ -84,12 +84,12 @@ void					GameEntityField::update(void)
 
 std::ostream &				operator<<(std::ostream & out, GameEntityField & rhs)
 {
-	int		index;
+	unsigned int	index;
 
 	index = 0;
-	if (rhs.getSize() > 0)
+	while (index < rhs.getSize())
 	{
-		out << (rhs.getField())[index];
+		out << (rhs.getField())[index] << std::endl;
 		++index;
 	}
 	return (out);
