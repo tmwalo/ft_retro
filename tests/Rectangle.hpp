@@ -8,9 +8,9 @@ class Rectangle
 	private:
 		Point	_topLeftCoords;
 		Point	_bottomRightCoords;
-		Rectangle(void);
 
 	public:
+		Rectangle(void);
 		Rectangle(Point topLeftCoords, Point bottomRightCoords);
 		Rectangle(Rectangle const & src);
 		virtual ~Rectangle(void);

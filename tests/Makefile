@@ -10,6 +10,8 @@ GE = GameEntity.cpp
 
 GEE = GameEntityEnv.cpp
 
+GEF = GameEntityField.cpp
+
 point: point_test.cpp $(PT)
 	$(CC) -o point point_test.cpp $(PT) $(FLAGS)
 
@@ -22,6 +24,9 @@ game_entity: game_entity_test.cpp $(GE) $(PT)
 game_entity_env: game_entity_env_test.cpp $(GEE) $(GE) $(PT)
 	$(CC) -o game_entity_env game_entity_env_test.cpp $(GEE) $(GE) $(PT) $(FLAGS)
 
+game_entity_field: game_entity_field_test.cpp $(GEF)
+	$(CC) -o game_entity_field game_entity_field_test.cpp $(GEF) $(PT) $(RECT) $(GE) $(GEE) $(FLAGS)
+
 fclean:
 	@echo "rm exes"
-	@/bin/rm point rectangle game_entity game_entity_env
+	@/bin/rm point rectangle game_entity game_entity_env game_entity_field

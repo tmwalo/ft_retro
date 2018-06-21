@@ -2,6 +2,10 @@
 
 Rectangle::Rectangle(void)
 {
+	Point		origin(0, 0);
+
+	this->_topLeftCoords = origin;
+	this->_bottomRightCoords = origin;
 	return ;
 }
 
