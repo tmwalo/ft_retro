@@ -4,6 +4,7 @@
 # include "GameEntityEnv.hpp"
 # include "GameEntity.hpp"
 # include "Point.hpp"
+# include "Rectangle.hpp"
 
 class GameEntityEnv : public GameEntity
 {
@@ -17,6 +18,7 @@ class GameEntityEnv : public GameEntity
 		virtual ~GameEntityEnv(void);
 		GameEntityEnv &		operator=(GameEntityEnv const & rhs);
 		void				update(void);
+		void				randomizeHeight(Rectangle gameBounds);
 
 };
 

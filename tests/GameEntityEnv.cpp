@@ -61,6 +61,15 @@ void				GameEntityEnv::update(void)
 	return ;
 }
 
+void				randomizeHeight(Rectangle gameBounds)
+{
+	unsigned int	minY;
+	unsigned int	maxY;
+
+	minY = gameBounds.getTopLeftCoords().getY();
+	maxY = gameBounds.getBottomRightCoords().getY();
+}
+
 std::ostream &		operator<<(std::ostream & out, GameEntityEnv & rhs)
 {
 	out << "display char: " << rhs.getDisplayChar() << std::endl;

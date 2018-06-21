@@ -78,7 +78,14 @@ void					GameEntityField::setFieldBounds(Rectangle fieldBounds)
 
 void					GameEntityField::update(void)
 {
-	
+	unsigned int	index;
+
+	index = 0;
+	while (index < rhs.getSize())
+	{
+		((this->getField())[index]).update();
+		++index;
+	}
 	return ;
 }
 
