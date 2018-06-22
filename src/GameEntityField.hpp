@@ -21,6 +21,7 @@ class GameEntityField
 		GameEntityField &		operator=(GameEntityField const & rhs);
 		void					fieldOfDuplicates(GameEntityEnv const & src);
 		void					randomizePositions(Rectangle gameBounds);
+		void					randomizeYPositions(Rectangle gameBounds);
 		Rectangle				getFieldBounds(void) const;
 		GameEntityEnv			*getField(void) const;
 		unsigned int			getSize(void) const;

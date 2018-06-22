@@ -81,6 +81,19 @@ void					GameEntityField::randomizePositions(Rectangle gameBounds)
 	return ;
 }
 
+void					GameEntityField::randomizeYPositions(Rectangle gameBounds)
+{
+	unsigned int	index;
+
+	index = 0;
+	while (index < this->getSize())
+	{
+		((this->getField())[index]).randomizeY(gameBounds);
+		++index;
+	}
+	return ;
+}
+
 Rectangle 				GameEntityField::getFieldBounds(void) const
 {
 	return (this->_fieldBounds);

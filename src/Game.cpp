@@ -75,10 +75,19 @@ void		Game::run(void)
 	Point			topLeft(0, 0);
 	Point			bottomRight(maxY, maxX);
 	Rectangle		gameBounds(topLeft, bottomRight);
+	
+	Point			enemyStartPt(5, maxX);
+	GameEntityEnv	enemy('X', enemyStartPt, 1000, 1000, 1000, 1000, 200, 3, "enemy of progress", 50, 100, 150, 25);
+	GameEntityField	horde(3);
+	GameEntityEnv	*ptHorde;
 
 	asteroidBelt.fieldOfDuplicates(asteroid);
 	asteroidBelt.randomizePositions(gameBounds);
 	field = asteroidBelt.getField();
+
+	horde.fieldOfDuplicates(enemy);
+	horde.randomizePositions(gameBounds);
+	ptHorde = horde.getField();
 	
 	srand(time(NULL));
 	
@@ -132,6 +141,7 @@ void		Game::run(void)
 		}
 
 		asteroidBelt.update(gameBounds);
+		horde.update(gameBounds);
 
 		clear();
 
@@ -142,13 +152,19 @@ void		Game::run(void)
 			mvaddch((field[index]).getPos().getY(), (field[index]).getPos().getX(), (field[index]).getDisplayChar());
 			++index;
 		}
+		index = 0;
+		while (index < horde.getSize())
+		{
+			mvaddch((ptHorde[index]).getPos().getY(), (ptHorde[index]).getPos().getX(), (ptHorde[index]).getDisplayChar());
+			++index;
+		}
 
 		refresh();
 
 		if (exitRequested)
 			break ;
 
-		usleep(10000);
+		usleep(20000);
 	}
 }
 
