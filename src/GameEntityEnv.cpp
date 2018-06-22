@@ -1,5 +1,6 @@
 
 #include "GameEntityEnv.hpp"
+#include <cstdlib>
 
 GameEntityEnv::GameEntityEnv(void)
 {
@@ -46,18 +47,64 @@ GameEntityEnv &		GameEntityEnv::operator=(GameEntityEnv const & rhs)
 	return (*this);
 }
 
-void				GameEntityEnv::update(void)
+void				GameEntityEnv::update(Rectangle gameBounds)
 {
-	int		posY;
-	int		posX;
+	int				posY;
+	int				posX;
+	unsigned int	minX;
 
 	posY = (this->getPos()).getY();
 	posX = (this->getPos()).getX();
+	minX = gameBounds.getTopLeftCoords().getX();
+	if (posX == (int)minX)
+	{
+		this->resetX(gameBounds);
+		this->randomizeY(gameBounds);
+	}
+	else
+	{
+		Point	newPosLeft(posY, posX - 1);
+		this->setPos(newPosLeft);
+	}
+	return ;
+}
 
-	Point	newPosLeft(posY, posX - 1);
-	
-	this->setPos(newPosLeft);
-	
+void				GameEntityEnv::resetX(Rectangle gameBounds)
+{
+	unsigned int	minX;
+	unsigned int	maxX;
+	int				posY;
+	int				posX;
+
+	minX = gameBounds.getTopLeftCoords().getX();
+	maxX = gameBounds.getBottomRightCoords().getX();
+	posY = (this->getPos()).getY();
+	posX = (this->getPos()).getX();
+	if (posX == (int)minX)
+	{
+		Point	newPosX(posY, maxX);
+		this->setPos(newPosX);
+	}
+	return ;
+
+}
+
+void				GameEntityEnv::randomizeY(Rectangle gameBounds)
+{
+	unsigned int	minY;
+	unsigned int	maxY;
+	int				randY;
+	int				posY;
+	int				posX;
+
+	minY = gameBounds.getTopLeftCoords().getY();
+	maxY = gameBounds.getBottomRightCoords().getY();
+	srand(time(NULL));
+	randY = (rand() % maxY) + minY;
+	posY = (this->getPos()).getY();
+	posX = (this->getPos()).getX();
+	Point	newPosY(randY, posX);
+	this->setPos(newPosY);
 	return ;
 }
 

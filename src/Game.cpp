@@ -61,9 +61,16 @@ void		Game::run(void)
 	bool			exitRequested;
 	int				posY;
 	int				posX;
-	Point			startPt(5, 220);
+	Point			startPt(10, 50);
 	GameEntityEnv	asteroid('*', startPt, 1000, 1000, 1000, 1000, 200, 3, "brick", 50, 100, 150, 25);
+	int				maxY;
+	int				maxX;
 
+	getmaxyx(wnd, maxY, maxX);
+	Point			topLeft(0, 0);
+	Point			bottomRight(maxY, maxX);
+	Rectangle		gameBounds(topLeft, bottomRight);
+	
 	while (1)
 	{
 		inputChar = wgetch(wnd);
@@ -113,7 +120,7 @@ void		Game::run(void)
 		
 		}
 
-		asteroid.update();
+		asteroid.update(gameBounds);
 
 		clear();
 

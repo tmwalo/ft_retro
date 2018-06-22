@@ -17,8 +17,9 @@ class GameEntityEnv : public GameEntity
 		GameEntityEnv(GameEntityEnv const & src);
 		virtual ~GameEntityEnv(void);
 		GameEntityEnv &		operator=(GameEntityEnv const & rhs);
-		void				update(void);
-		void				randomizeHeight(Rectangle gameBounds);
+		void				update(Rectangle gameBounds);
+		void				resetX(Rectangle gameBounds);
+		void				randomizeY(Rectangle gameBounds);
 
 };
 
