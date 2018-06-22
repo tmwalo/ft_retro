@@ -55,6 +55,32 @@ GameEntityField &		GameEntityField::operator=(GameEntityField const & rhs)
 	return (*this);
 }
 
+void					GameEntityField::fieldOfDuplicates(GameEntityEnv const & src)
+{
+	unsigned int	index;
+
+	index = 0;
+	while (index < this->getSize())
+	{
+		((this->getField())[index]) = src;
+		++index;
+	}
+	return ;
+}
+
+void					GameEntityField::randomizePositions(Rectangle gameBounds)
+{
+	unsigned int	index;
+
+	index = 0;
+	while (index < this->getSize())
+	{
+		((this->getField())[index]).randomizePos(gameBounds);
+		++index;
+	}
+	return ;
+}
+
 Rectangle 				GameEntityField::getFieldBounds(void) const
 {
 	return (this->_fieldBounds);
@@ -76,14 +102,14 @@ void					GameEntityField::setFieldBounds(Rectangle fieldBounds)
 	return ;
 }
 
-void					GameEntityField::update(void)
+void					GameEntityField::update(Rectangle gameBounds)
 {
 	unsigned int	index;
 
 	index = 0;
-	while (index < rhs.getSize())
+	while (index < this->getSize())
 	{
-		((this->getField())[index]).update();
+		((this->getField())[index]).update(gameBounds);
 		++index;
 	}
 	return ;

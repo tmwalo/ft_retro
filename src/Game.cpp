@@ -3,8 +3,10 @@
 #include "Game.hpp"
 #include "GameEntity.hpp"
 #include "GameEntityEnv.hpp"
+#include "GameEntityField.hpp"
 #include "Point.hpp"
 #include <unistd.h>
+#include <cstdlib>
 
 WINDOW	*wnd;
 
@@ -63,13 +65,22 @@ void		Game::run(void)
 	int				posX;
 	Point			startPt(10, 50);
 	GameEntityEnv	asteroid('*', startPt, 1000, 1000, 1000, 1000, 200, 3, "brick", 50, 100, 150, 25);
+	GameEntityField	asteroidBelt(12);
 	int				maxY;
 	int				maxX;
+	unsigned int	index;
+	GameEntityEnv	*field;
 
 	getmaxyx(wnd, maxY, maxX);
 	Point			topLeft(0, 0);
 	Point			bottomRight(maxY, maxX);
 	Rectangle		gameBounds(topLeft, bottomRight);
+
+	asteroidBelt.fieldOfDuplicates(asteroid);
+	asteroidBelt.randomizePositions(gameBounds);
+	field = asteroidBelt.getField();
+	
+	srand(time(NULL));
 	
 	while (1)
 	{
@@ -120,12 +131,17 @@ void		Game::run(void)
 		
 		}
 
-		asteroid.update(gameBounds);
+		asteroidBelt.update(gameBounds);
 
 		clear();
 
 		mvaddch(player.getPos().getY(), player.getPos().getX(), player.getDisplayChar());
-		mvaddch(asteroid.getPos().getY(), asteroid.getPos().getX(), asteroid.getDisplayChar());
+		index = 0;
+		while (index < asteroidBelt.getSize())
+		{
+			mvaddch((field[index]).getPos().getY(), (field[index]).getPos().getX(), (field[index]).getDisplayChar());
+			++index;
+		}
 
 		refresh();
 

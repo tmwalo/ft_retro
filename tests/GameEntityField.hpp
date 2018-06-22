@@ -19,11 +19,13 @@ class GameEntityField
 		GameEntityField(GameEntityField const & src);
 		virtual ~GameEntityField(void);
 		GameEntityField &		operator=(GameEntityField const & rhs);
+		void					fieldOfDuplicates(GameEntityEnv const & src);
+		void					randomizePositions(Rectangle gameBounds);
 		Rectangle				getFieldBounds(void) const;
 		GameEntityEnv			*getField(void) const;
 		unsigned int			getSize(void) const;
 		void					setFieldBounds(Rectangle fieldBounds);
-		void					update(void);
+		void					update(Rectangle gameBounds);
 
 };
 

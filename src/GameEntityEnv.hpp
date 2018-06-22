@@ -20,6 +20,7 @@ class GameEntityEnv : public GameEntity
 		void				update(Rectangle gameBounds);
 		void				resetX(Rectangle gameBounds);
 		void				randomizeY(Rectangle gameBounds);
+		void				randomizePos(Rectangle gameBounds);
 
 };
 

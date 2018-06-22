@@ -99,11 +99,30 @@ void				GameEntityEnv::randomizeY(Rectangle gameBounds)
 
 	minY = gameBounds.getTopLeftCoords().getY();
 	maxY = gameBounds.getBottomRightCoords().getY();
-	srand(time(NULL));
 	randY = (rand() % maxY) + minY;
 	posY = (this->getPos()).getY();
 	posX = (this->getPos()).getX();
 	Point	newPosY(randY, posX);
+	this->setPos(newPosY);
+	return ;
+}
+
+void				GameEntityEnv::randomizePos(Rectangle gameBounds)
+{
+	unsigned int	minY;
+	unsigned int	maxY;
+	unsigned int	minX;
+	unsigned int	maxX;
+	int				randY;
+	int				randX;
+
+	minY = gameBounds.getTopLeftCoords().getY();
+	maxY = gameBounds.getBottomRightCoords().getY();
+	minX = gameBounds.getTopLeftCoords().getX();
+	maxX = gameBounds.getBottomRightCoords().getX();
+	randY = (rand() % maxY) + minY;
+	randX = (rand() % maxX) + minX;
+	Point	newPosY(randY, randX);
 	this->setPos(newPosY);
 	return ;
 }
