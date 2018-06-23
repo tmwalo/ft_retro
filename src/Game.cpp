@@ -70,6 +70,7 @@ void		Game::run(void)
 	int				maxX;
 	unsigned int	index;
 	GameEntityEnv	*field;
+	int				tick;
 
 	getmaxyx(wnd, maxY, maxX);
 	Point			topLeft(0, 0);
@@ -78,7 +79,7 @@ void		Game::run(void)
 	
 	Point			enemyStartPt(5, maxX);
 	GameEntityEnv	enemy('X', enemyStartPt, 1000, 1000, 1000, 1000, 200, 3, "enemy of progress", 50, 100, 150, 25);
-	GameEntityField	horde(3);
+	GameEntityField	horde(4);
 	GameEntityEnv	*ptHorde;
 
 	asteroidBelt.fieldOfDuplicates(asteroid);
@@ -90,6 +91,8 @@ void		Game::run(void)
 	ptHorde = horde.getField();
 	
 	srand(time(NULL));
+
+	tick = 0;
 	
 	while (1)
 	{
@@ -140,8 +143,10 @@ void		Game::run(void)
 		
 		}
 
-		asteroidBelt.update(gameBounds);
-		horde.update(gameBounds);
+		if ((tick % 10) == 0)
+			asteroidBelt.update(gameBounds);
+		if ((tick % 20) == 0)
+			horde.update(gameBounds);
 
 		clear();
 
@@ -164,7 +169,8 @@ void		Game::run(void)
 		if (exitRequested)
 			break ;
 
-		usleep(20000);
+		++tick;
+		usleep(10000);
 	}
 }
 
