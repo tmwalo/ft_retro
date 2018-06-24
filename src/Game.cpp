@@ -65,7 +65,7 @@ void		Game::run(void)
 	int				posX;
 	Point			startPt(10, 50);
 	GameEntityEnv	asteroid('*', startPt, 1000, 1000, 1000, 1000, 200, 3, "brick", 50, 100, 150, 25);
-	GameEntityField	asteroidBelt(12);
+	GameEntityField	asteroidBelt(15);
 	int				maxY;
 	int				maxX;
 	unsigned int	index;

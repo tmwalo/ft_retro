@@ -12,6 +12,8 @@ GEE = GameEntityEnv.cpp
 
 GEF = GameEntityField.cpp
 
+AMO = Amo.cpp
+
 point: point_test.cpp $(PT)
 	$(CC) -o point point_test.cpp $(PT) $(FLAGS)
 
@@ -27,6 +29,9 @@ game_entity_env: game_entity_env_test.cpp $(GEE) $(GE) $(PT)
 game_entity_field: game_entity_field_test.cpp $(GEF)
 	$(CC) -o game_entity_field game_entity_field_test.cpp $(GEF) $(PT) $(RECT) $(GE) $(GEE) $(FLAGS)
 
+amo: amo_test.cpp $(AMO) $(RECT) $(PT)
+	$(CC) -o amo amo_test.cpp $(AMO) $(RECT) $(PT) $(FLAGS)
+
 fclean:
 	@echo "rm exes"
-	@/bin/rm point rectangle game_entity game_entity_env game_entity_field
+	@/bin/rm point rectangle game_entity game_entity_env game_entity_field amo
