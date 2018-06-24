@@ -21,6 +21,7 @@ class GameEntityEnv : public GameEntity
 		void				resetX(Rectangle gameBounds);
 		void				randomizeY(Rectangle gameBounds);
 		void				randomizePos(Rectangle gameBounds);
+		void				detectAmoCollisions(GameEntity & enemy, Rectangle gameBounds);
 
 };
 

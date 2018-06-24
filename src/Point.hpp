@@ -15,6 +15,7 @@ class Point
 		Point(Point const & src);
 		virtual ~Point(void);
 		Point &			operator=(Point const & rhs);
+		bool			operator==(Point const & rhs) const;
 		unsigned int	getY(void) const;
 		unsigned int	getX(void) const;
 		void			setY(unsigned int val);

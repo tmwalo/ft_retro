@@ -125,6 +125,22 @@ void				GameEntityEnv::randomizePos(Rectangle gameBounds)
 	return ;
 }
 
+void				GameEntityEnv::detectAmoCollisions(GameEntity & enemy, Rectangle gameBounds)
+{
+	unsigned int	index;
+
+	index = 0;
+	while (index < enemy.getAmoSize())
+	{
+		if (this->getPos() == ((enemy.getAmo())[index]).getPos())
+		{
+			this->resetX(gameBounds);
+			this->randomizeY(gameBounds);
+		}
+		++index;
+	}
+}
+
 std::ostream &		operator<<(std::ostream & out, GameEntityEnv & rhs)
 {
 	out << "display char: " << rhs.getDisplayChar() << std::endl;

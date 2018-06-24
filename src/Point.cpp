@@ -28,6 +28,14 @@ Point &			Point::operator=(Point const & rhs)
 	return (*this);
 }
 
+bool			Point::operator==(Point const & rhs) const
+{
+	if ((this->getY() == rhs.getY()) && (this->getX() == rhs.getX()))
+		return (true);
+	else
+		return (false);
+}
+
 unsigned int 	Point::getY(void) const
 {
 	return (this->_y);

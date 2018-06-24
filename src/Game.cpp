@@ -158,6 +158,12 @@ void		Game::run(void)
 		if ((tick % 20) == 0)
 			horde.update(gameBounds);
 		player.updateAmo(gameBounds);
+		index = 0;
+		while (index < horde.getSize())
+		{
+			(ptHorde[index]).detectAmoCollisions(player, gameBounds);
+			++index;
+		}
 
 		clear();
 
