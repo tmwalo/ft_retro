@@ -27,6 +27,8 @@ int		main(void)
 	std::cout << asteroid1 << std::endl;
 
 	std::cout << (player1.getAmo())[0] << std::endl;
+	player1.shoot();
+	std::cout << (player1.getAmo())[0] << std::endl;
 
 	return (0);
 }

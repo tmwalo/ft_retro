@@ -23,7 +23,7 @@ class GameEntity
 		int							_specialAttckDmg;
 		int							_armorDmgReduction;
 		Amo							*_amo;
-		unsigned int				_size;
+		unsigned int				_amoSize;
 
 	public:
 		GameEntity(void);
@@ -52,7 +52,7 @@ class GameEntity
 		int					getSpecialAttckDmg(void) const;
 		int					getArmorDmgReduction(void) const;
 		Amo 				*getAmo(void) const;
-		unsigned int		getSize(void) const;
+		unsigned int		getAmoSize(void) const;
 		void				setDisplayChar(char val);
 		void				setPos(Point val);
 		void				setHitPts(int val);
@@ -66,6 +66,7 @@ class GameEntity
 		void				setRangedAttckDmg(int val);
 		void				setSpecialAttckDmg(int val);
 		void				setArmorDmgReduction(int val);
+		void				shoot(void);
 
 };
 

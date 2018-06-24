@@ -18,9 +18,9 @@ GameEntity::GameEntity(void) : _displayChar('*'),
 {
 	Point	pt(0, 0);
 
-	this->_size = 100;
+	this->_amoSize = 100;
 	this->_pos = pt;
-	this->_amo = new Amo[this->_size];
+	this->_amo = new Amo[this->_amoSize];
 	return ;
 }
 
@@ -42,8 +42,8 @@ GameEntity::GameEntity(char displayChar, Point pos, int hitPts, int maxHitPts, i
 										_specialAttckDmg(specialAttckDmg),
 										_armorDmgReduction(armorDmgReduction)
 {
-	this->_size = 100;
-	this->_amo = new Amo[this->_size];
+	this->_amoSize = 100;
+	this->_amo = new Amo[this->_amoSize];
 	return ;
 }
 
@@ -51,7 +51,7 @@ GameEntity::GameEntity(GameEntity const & src)
 {
 	unsigned int	index;
 
-	this->_size = src.getSize();
+	this->_amoSize = src.getAmoSize();
 	this->_displayChar = src.getDisplayChar();
 	this->_pos = src.getPos();
 	this->_hitPts = src.getHitPts();
@@ -65,9 +65,9 @@ GameEntity::GameEntity(GameEntity const & src)
 	this->_rangedAttckDmg = src.getRangedAttckDmg();
 	this->_specialAttckDmg = src.getSpecialAttckDmg();
 	this->_armorDmgReduction = src.getArmorDmgReduction();
-	this->_amo = new Amo[this->_size];
+	this->_amo = new Amo[this->_amoSize];
 	index  = 0;
-	while (index < this->getSize())
+	while (index < this->getAmoSize())
 	{
 		(this->_amo)[index] = (src.getAmo())[index];
 		++index;
@@ -89,7 +89,7 @@ GameEntity &		GameEntity::operator=(GameEntity const & rhs)
 	{
 		if (this->_amo)
 			delete [] (this->_amo);
-		this->_size = rhs.getSize();
+		this->_amoSize = rhs.getAmoSize();
 		this->_displayChar = rhs.getDisplayChar();
 		this->_pos = rhs.getPos();
 		this->_hitPts = rhs.getHitPts();
@@ -103,9 +103,9 @@ GameEntity &		GameEntity::operator=(GameEntity const & rhs)
 		this->_rangedAttckDmg = rhs.getRangedAttckDmg();
 		this->_specialAttckDmg = rhs.getSpecialAttckDmg();
 		this->_armorDmgReduction = rhs.getArmorDmgReduction();
-		this->_amo = new Amo[this->_size];
+		this->_amo = new Amo[this->_amoSize];
 		index  = 0;
-		while (index < this->getSize())
+		while (index < this->getAmoSize())
 		{
 			(this->_amo)[index] = (rhs.getAmo())[index];
 			++index;
@@ -230,9 +230,9 @@ Amo 			*GameEntity::getAmo(void) const
 	return (this->_amo);
 }
 
-unsigned int 	GameEntity::getSize(void) const
+unsigned int 	GameEntity::getAmoSize(void) const
 {
-	return (this->_size);
+	return (this->_amoSize);
 }
 
 void			GameEntity::setDisplayChar(char val)
@@ -298,6 +298,25 @@ void			GameEntity::setSpecialAttckDmg(int val)
 void			GameEntity::setArmorDmgReduction(int val)
 {
 	this->_armorDmgReduction = val;
+}
+
+void			GameEntity::shoot(void)
+{
+	unsigned int	index;
+
+	index = 0;
+	while (index < this->getAmoSize())
+	{
+		if (((this->getAmo())[index]).getIsFired() == false)
+		{
+			Point			amoPos((this->getPos()).getY(), (this->getPos()).getX() + 1);
+
+			(this->getAmo())->setPos(amoPos);
+			((this->getAmo())[index]).setIsFired(true);
+			break ;
+		}
+		++index;
+	}
 }
 
 std::ostream &		operator<<(std::ostream & out, GameEntity & rhs)
