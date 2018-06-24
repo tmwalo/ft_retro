@@ -18,7 +18,9 @@ GameEntity::GameEntity(void) : _displayChar('*'),
 {
 	Point	pt(0, 0);
 
+	this->_size = 100;
 	this->_pos = pt;
+	this->_amo = new Amo[this->_size];
 	return ;
 }
 
@@ -40,35 +42,75 @@ GameEntity::GameEntity(char displayChar, Point pos, int hitPts, int maxHitPts, i
 										_specialAttckDmg(specialAttckDmg),
 										_armorDmgReduction(armorDmgReduction)
 {
+	this->_size = 100;
+	this->_amo = new Amo[this->_size];
 	return ;
 }
 
 GameEntity::GameEntity(GameEntity const & src)
 {
-	*this = src;
+	unsigned int	index;
+
+	this->_size = src.getSize();
+	this->_displayChar = src.getDisplayChar();
+	this->_pos = src.getPos();
+	this->_hitPts = src.getHitPts();
+	this->_maxHitPts = src.getMaxHitPts();
+	this->_energyPts = src.getEnergyPts();
+	this->_maxEnergyPts = src.getMaxEnergyPts();
+	this->_specialAttckCost = src.getSpecialAttckCost();
+	this->_lvl = src.getLvl();
+	this->_name = src.getName();
+	this->_meleeAttckDmg = src.getMeleeAttckDmg();
+	this->_rangedAttckDmg = src.getRangedAttckDmg();
+	this->_specialAttckDmg = src.getSpecialAttckDmg();
+	this->_armorDmgReduction = src.getArmorDmgReduction();
+	this->_amo = new Amo[this->_size];
+	index  = 0;
+	while (index < this->getSize())
+	{
+		(this->_amo)[index] = (src.getAmo())[index];
+		++index;
+	}
 	return ;
 }
 
 GameEntity::~GameEntity(void)
 {
+	delete [] (this->_amo);
 	return ;
 }
 
 GameEntity &		GameEntity::operator=(GameEntity const & rhs)
 {
-	this->_displayChar = rhs.getDisplayChar();
-	this->_pos = rhs.getPos();
-	this->_hitPts = rhs.getHitPts();
-	this->_maxHitPts = rhs.getMaxHitPts();
-	this->_energyPts = rhs.getEnergyPts();
-	this->_maxEnergyPts = rhs.getMaxEnergyPts();
-	this->_specialAttckCost = rhs.getSpecialAttckCost();
-	this->_lvl = rhs.getLvl();
-	this->_name = rhs.getName();
-	this->_meleeAttckDmg = rhs.getMeleeAttckDmg();
-	this->_rangedAttckDmg = rhs.getRangedAttckDmg();
-	this->_specialAttckDmg = rhs.getSpecialAttckDmg();
-	this->_armorDmgReduction = rhs.getArmorDmgReduction();
+	unsigned int	index;
+
+	if (this != &rhs)
+	{
+		if (this->_amo)
+			delete [] (this->_amo);
+		this->_size = rhs.getSize();
+		this->_displayChar = rhs.getDisplayChar();
+		this->_pos = rhs.getPos();
+		this->_hitPts = rhs.getHitPts();
+		this->_maxHitPts = rhs.getMaxHitPts();
+		this->_energyPts = rhs.getEnergyPts();
+		this->_maxEnergyPts = rhs.getMaxEnergyPts();
+		this->_specialAttckCost = rhs.getSpecialAttckCost();
+		this->_lvl = rhs.getLvl();
+		this->_name = rhs.getName();
+		this->_meleeAttckDmg = rhs.getMeleeAttckDmg();
+		this->_rangedAttckDmg = rhs.getRangedAttckDmg();
+		this->_specialAttckDmg = rhs.getSpecialAttckDmg();
+		this->_armorDmgReduction = rhs.getArmorDmgReduction();
+		this->_amo = new Amo[this->_size];
+		index  = 0;
+		while (index < this->getSize())
+		{
+			(this->_amo)[index] = (rhs.getAmo())[index];
+			++index;
+		}
+	}
 	return (*this);
 }
 
@@ -181,6 +223,16 @@ int				GameEntity::getSpecialAttckDmg(void) const
 int				GameEntity::getArmorDmgReduction(void) const
 {
 	return (this->_armorDmgReduction);
+}
+
+Amo 			*GameEntity::getAmo(void) const
+{
+	return (this->_amo);
+}
+
+unsigned int 	GameEntity::getSize(void) const
+{
+	return (this->_size);
 }
 
 void			GameEntity::setDisplayChar(char val)

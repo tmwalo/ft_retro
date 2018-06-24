@@ -20,8 +20,8 @@ point: point_test.cpp $(PT)
 rectangle: rectangle_test.cpp $(RECT) $(PT)
 	$(CC) -o rectangle rectangle_test.cpp $(RECT) $(PT) $(FLAGS)
 
-game_entity: game_entity_test.cpp $(GE) $(PT)
-	$(CC) -o game_entity game_entity_test.cpp $(GE) $(PT) $(FLAGS)
+game_entity: game_entity_test.cpp $(GE) $(PT) $(AMO) $(RECT)
+	$(CC) -o game_entity game_entity_test.cpp $(GE) $(PT) $(AMO) $(RECT) $(FLAGS)
 
 game_entity_env: game_entity_env_test.cpp $(GEE) $(GE) $(PT)
 	$(CC) -o game_entity_env game_entity_env_test.cpp $(GEE) $(GE) $(PT) $(FLAGS)

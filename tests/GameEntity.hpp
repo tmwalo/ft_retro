@@ -3,6 +3,7 @@
 # define GAMEENTITY_H
 # include <iostream>
 # include "Point.hpp"
+# include "Amo.hpp"
 
 class GameEntity
 {
@@ -21,6 +22,8 @@ class GameEntity
 		int							_rangedAttckDmg;
 		int							_specialAttckDmg;
 		int							_armorDmgReduction;
+		Amo							*_amo;
+		unsigned int				_size;
 
 	public:
 		GameEntity(void);
@@ -48,6 +51,8 @@ class GameEntity
 		int					getRangedAttckDmg(void) const;
 		int					getSpecialAttckDmg(void) const;
 		int					getArmorDmgReduction(void) const;
+		Amo 				*getAmo(void) const;
+		unsigned int		getSize(void) const;
 		void				setDisplayChar(char val);
 		void				setPos(Point val);
 		void				setHitPts(int val);

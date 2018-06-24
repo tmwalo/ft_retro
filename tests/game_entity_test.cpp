@@ -26,5 +26,7 @@ int		main(void)
 	asteroid1 = asteroid2;
 	std::cout << asteroid1 << std::endl;
 
+	std::cout << (player1.getAmo())[0] << std::endl;
+
 	return (0);
 }
