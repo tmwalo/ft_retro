@@ -71,6 +71,7 @@ void		Game::run(void)
 	unsigned int	index;
 	GameEntityEnv	*field;
 	int				tick;
+	Amo				*amo;
 
 	getmaxyx(wnd, maxY, maxX);
 	Point			topLeft(0, 0);
@@ -89,7 +90,9 @@ void		Game::run(void)
 	horde.fieldOfDuplicates(enemy);
 	horde.randomizePositions(gameBounds);
 	ptHorde = horde.getField();
-	
+
+	amo = player.getAmo();
+
 	srand(time(NULL));
 
 	tick = 0;
@@ -137,6 +140,13 @@ void		Game::run(void)
 				player.setPos(newPosRight);
 				break ;
 			}
+		
+			case KEY_ENTER:
+			case ' ':
+			{
+				player.shoot();
+				break ;
+			}
 			
 			default:
 				break ;
@@ -147,6 +157,7 @@ void		Game::run(void)
 			asteroidBelt.update(gameBounds);
 		if ((tick % 20) == 0)
 			horde.update(gameBounds);
+		player.updateAmo();
 
 		clear();
 
@@ -155,6 +166,13 @@ void		Game::run(void)
 		while (index < asteroidBelt.getSize())
 		{
 			mvaddch((field[index]).getPos().getY(), (field[index]).getPos().getX(), (field[index]).getDisplayChar());
+			++index;
+		}
+		index = 0;
+		while (index < player.getAmoSize())
+		{
+			if ((amo[index]).getIsFired())
+				mvaddch((amo[index]).getPos().getY(), (amo[index]).getPos().getX(), (amo[index]).getDisplayChar());
 			++index;
 		}
 		index = 0;

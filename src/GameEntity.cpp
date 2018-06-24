@@ -309,11 +309,28 @@ void			GameEntity::shoot(void)
 	{
 		if (((this->getAmo())[index]).getIsFired() == false)
 		{
-			Point			amoPos((this->getPos()).getY(), (this->getPos()).getX() + 1);
+			Point			amoPos((this->getPos()).getY(), (this->getPos()).getX());
 
-			(this->getAmo())->setPos(amoPos);
+			((this->getAmo())[index]).setPos(amoPos);
 			((this->getAmo())[index]).setIsFired(true);
 			break ;
+		}
+		++index;
+	}
+}
+
+void			GameEntity::updateAmo(void)
+{
+	unsigned int	index;
+
+	index = 0;
+	while (index < this->getAmoSize())
+	{
+		if (((this->getAmo())[index]).getIsFired() == true)
+		{
+			Point			amoPos(((this->getAmo())[index]).getPos().getY(), ((this->getAmo())[index]).getPos().getX() + 1);
+
+			((this->getAmo())[index]).setPos(amoPos);
 		}
 		++index;
 	}

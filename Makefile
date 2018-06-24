@@ -7,10 +7,10 @@ FLAGS = -Wall -Wextra -Werror
 LIB = -lncurses
 
 SRC = src/main.cpp src/Game.cpp src/GameEntity.cpp src/Point.cpp src/GameEntityEnv.cpp src/Rectangle.cpp \
-		src/GameEntityField.cpp
+		src/GameEntityField.cpp src/Amo.cpp
 
 OBJ = bin/main.o bin/Game.o bin/GameEntity.o bin/Point.o bin/GameEntityEnv.o bin/Rectangle.o \
-		bin/GameEntityField.o
+		bin/GameEntityField.o bin/Amo.o
 
 all: $(NAME)
 

@@ -67,6 +67,7 @@ class GameEntity
 		void				setSpecialAttckDmg(int val);
 		void				setArmorDmgReduction(int val);
 		void				shoot(void);
+		void				updateAmo(void);
 
 };
 
