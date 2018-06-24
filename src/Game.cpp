@@ -61,6 +61,7 @@ void		Game::run(void)
 	GameEntity		player('>', startPos, 1000, 1000, 1000, 1000, 200, 3, "lonewave", 50, 100, 150, 25);
 	int				inputChar;
 	bool			exitRequested;
+	bool			gameOver;
 	int				posY;
 	int				posX;
 	Point			startPt(10, 50);
@@ -97,6 +98,8 @@ void		Game::run(void)
 
 	tick = 0;
 	
+	gameOver = false;
+
 	while (1)
 	{
 		inputChar = wgetch(wnd);
@@ -164,6 +167,19 @@ void		Game::run(void)
 			(ptHorde[index]).detectAmoCollisions(player, gameBounds);
 			++index;
 		}
+
+		index = 0;
+		while (index < horde.getSize())
+		{
+			if (player.getPos() == (ptHorde[index]).getPos())
+			{
+				gameOver = true;
+				break ;
+			}
+			++index;
+		}
+		if (gameOver)
+			break ;
 
 		clear();
 
