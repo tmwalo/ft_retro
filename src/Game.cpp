@@ -157,7 +157,7 @@ void		Game::run(void)
 			asteroidBelt.update(gameBounds);
 		if ((tick % 20) == 0)
 			horde.update(gameBounds);
-		player.updateAmo();
+		player.updateAmo(gameBounds);
 
 		clear();
 

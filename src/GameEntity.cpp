@@ -319,10 +319,12 @@ void			GameEntity::shoot(void)
 	}
 }
 
-void			GameEntity::updateAmo(void)
+void			GameEntity::updateAmo(Rectangle gameBounds)
 {
 	unsigned int	index;
+	unsigned int	maxX;
 
+	maxX = gameBounds.getBottomRightCoords().getX();
 	index = 0;
 	while (index < this->getAmoSize())
 	{
@@ -331,6 +333,8 @@ void			GameEntity::updateAmo(void)
 			Point			amoPos(((this->getAmo())[index]).getPos().getY(), ((this->getAmo())[index]).getPos().getX() + 1);
 
 			((this->getAmo())[index]).setPos(amoPos);
+			if (((this->getAmo())[index]).getPos().getX() > maxX)
+				((this->getAmo())[index]).setIsFired(false);
 		}
 		++index;
 	}
