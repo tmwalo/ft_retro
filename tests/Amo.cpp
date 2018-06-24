@@ -78,7 +78,11 @@ void			Amo::setDisplayChar(char val)
 
 void			Amo::setPos(Point val)
 {
+	Point		size(1, 1);
+	Rectangle	newBounds(val, size);
+
 	this->_pos = val;
+	this->setBounds(newBounds);
 	return ;
 }
 
